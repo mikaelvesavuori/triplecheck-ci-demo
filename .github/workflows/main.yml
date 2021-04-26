@@ -22,5 +22,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
         id: node
-      - run: npm install -g triplecheck-cli
+      - run: npm install -g
       - run: triplecheck
