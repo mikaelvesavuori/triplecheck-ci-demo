@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "triplecheck-cli": "^0.0.5"
+    "triplecheck-cli": "^0.0.6"
   }
 }
