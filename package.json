@@ -1,0 +1,15 @@
+{
+  "name": "triplecheck-ci-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "triplecheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "triplecheck-cli": "^0.0.3"
+  }
+}

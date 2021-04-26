@@ -1,0 +1,26 @@
+{
+  "identity": {
+    "version": "0.0.1",
+    "name": "example-provider",
+    "endpoint": "http://localhost:8080/api"
+  },
+  "tests": {
+    "testScope": [],
+    "excludeScope": [],
+    "verifyLiveEndpoints": false,
+    "skipTestingLocalResources": false,
+    "skipTestingRemoteResources": true
+  },
+  "requestOptions": {},
+  "resources": {
+    "contractsLocal": "__testdata__/contract.graphql.json",
+    "contractsCollection": "",
+    "testsLocal": "__testdata__/test.graphql.json",
+    "testsCollection": ""
+  },
+  "publishing": {
+    "brokerEndpoint": "",
+    "publishLocalContracts": false,
+    "publishLocalTests": false
+  }
+}
