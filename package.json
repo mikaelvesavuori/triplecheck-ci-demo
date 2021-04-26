@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "triplecheck-cli": "^0.0.4"
+    "triplecheck-cli": "^0.0.4",
+    "tslib": "^2.2.0"
   }
 }
