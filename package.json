@@ -9,8 +9,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "triplecheck-cli": "^0.0.6"
-  }
+  "license": "ISC"
 }
