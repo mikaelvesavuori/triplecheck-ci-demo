@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "triplecheck"
+    "test": "triplecheck",
+    "test:local": "node ./node_modules/triplecheck-cli/build/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "triplecheck-cli": "^0.0.3"
+    "triplecheck-cli": "^0.0.4"
   }
 }

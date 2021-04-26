@@ -13,9 +13,9 @@
   },
   "requestOptions": {},
   "resources": {
-    "contractsLocal": "__testdata__/contract.graphql.json",
+    "contractsLocal": "contract.graphql.json",
     "contractsCollection": "",
-    "testsLocal": "__testdata__/test.graphql.json",
+    "testsLocal": "test.graphql.json",
     "testsCollection": ""
   },
   "publishing": {
