@@ -1,11 +1,13 @@
 name: main
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
       - "feature/*"
       - "feature/**"
+
 jobs:
   build-unix:
     runs-on: ${{ matrix.os }}
