@@ -43,9 +43,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
         id: figma-latest
         if: ${{ github.event.inputs.version }} == 'Latest'
-      - run: |
-          npm install -g figmagic
-          figmagic
+      - run: npm install -g figmagic
+      - run: figmagic
 
       - name: Run Figmagic and named version of Figma data, with Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -53,6 +52,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
         id: figma-versioned
         if: ${{ github.event.inputs.version }} != 'Latest'
-      - run: |
-          npm install -g figmagic
-          figmagic --versionName ${{ github.event.inputs.version }}
+      - run: npm install -g figmagic
+      - run: figmagic --versionName ${{ github.event.inputs.version }}
