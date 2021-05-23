@@ -1,5 +1,4 @@
 name: main
-
 #description: "Example of running Figmagic in CI through the Figma GitHub Actions plugin"
 
 on:
@@ -41,7 +40,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-        id: figmagic-latest
+        id: figma-latest
         if: ${{ github.event.inputs.version }} == 'Latest'
         run: |
           npm install -g figmagic
@@ -51,7 +50,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-        id: figmagic-versioned
+        id: figma-versioned
         if: ${{ github.event.inputs.version }} != 'Latest'
         run: |
           npm install -g figmagic
