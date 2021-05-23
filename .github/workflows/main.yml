@@ -56,7 +56,7 @@ jobs:
 
       - name: Run Figmagic and use latest Figma data
         id: figma-latest
-        if: !${{ github.event.inputs.version }}
+        if: ${{ !github.event.inputs.version }}
         run: node node_modules/figmagic/build/index.js
 
       - name: Run Figmagic and use named version of Figma data
