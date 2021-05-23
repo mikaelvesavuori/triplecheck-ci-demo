@@ -33,29 +33,33 @@ jobs:
         os: ["ubuntu-latest"]
         node-version: [14.x]
     steps:
-      - run: echo "MESSAGE --- ${{ github.event.inputs.message }}"
-      - run: echo "BRANCH --- ${{ github.event.inputs.branch }}"
-      - run: echo "VERSION --- ${{ github.event.inputs.version }}"
+      - name: Inputs
+        id: input-messages
+        run: |
+          echo "MESSAGE ---> '${{ github.event.inputs.message }}'"
+          echo "BRANCH  ---> '${{ github.event.inputs.branch }}'"
+          echo "VERSION ---> '${{ github.event.inputs.version }}'"
+
       - name: Checkout
-        uses: actions/checkout@v2
         id: checkout
+        uses: actions/checkout@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
+        id: node
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-        id: node
 
       - name: Install Figmagic
-        run: npm install -D figmagic
         id: install
+        run: npm install -D figmagic
 
-      - name: Run Figmagic and use latest data
+      - name: Run Figmagic and use latest Figma data
         id: figma-latest
-        if: github.event.inputs.version == 'Latest'
+        if: !${{ github.event.inputs.version }}
         run: node node_modules/figmagic/build/index.js
 
-      - name: Run Figmagic and named version of Figma data
+      - name: Run Figmagic and use named version of Figma data
         id: figma-versioned
-        if: github.event.inputs.version != 'Latest'
+        if: ${{ github.event.inputs.version }}
         run: node node_modules/figmagic/build/index.js -- --versionName ${{ github.event.inputs.version }}
