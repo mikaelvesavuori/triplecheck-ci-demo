@@ -40,7 +40,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
         id: node
-        run: npm install -D figmagic
+
+      - run: npm install -D figmagic
 
       - name: Run Figmagic and use latest data, with Node.js ${{ matrix.node-version }}
         id: figma-latest
