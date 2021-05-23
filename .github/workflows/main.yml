@@ -1,5 +1,7 @@
 name: main
 
+description: "Example of running Figmagic in CI through the Figma GitHub Actions plugin"
+
 on:
   workflow_dispatch:
     inputs:
@@ -44,8 +46,8 @@ jobs:
 
       - name: Run Figmagic and use latest data
         if: ${{ github.event.inputs.version }} == 'Latest'
-        run: figmagic
+      - run: figmagic
 
       - name: Run Figmagic and use named version of Figma data
         if: ${{ github.event.inputs.version }} != 'Latest'
-        run: figmagic --versionName ${{ github.event.inputs.version }}
+      - run: figmagic --versionName ${{ github.event.inputs.version }}
