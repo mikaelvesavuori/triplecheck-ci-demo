@@ -30,7 +30,7 @@ jobs:
         node-version: [14.x]
     steps:
       - name: Output message
-      - run: |
+        run: |
           echo "MESSAGE: ${{ github.event.inputs.message }}"
 
       - name: Checkout
@@ -46,8 +46,8 @@ jobs:
 
       - name: Run Figmagic and use latest data
         if: ${{ github.event.inputs.version }} == 'Latest'
-      - run: figmagic
+        run: figmagic
 
       - name: Run Figmagic and use named version of Figma data
         if: ${{ github.event.inputs.version }} != 'Latest'
-      - run: figmagic --versionName ${{ github.event.inputs.version }}
+        run: figmagic --versionName ${{ github.event.inputs.version }}
