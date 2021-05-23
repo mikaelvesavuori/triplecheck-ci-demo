@@ -1,5 +1,4 @@
 name: main
-description: "Example of running Figmagic in CI through the Figma GitHub Actions plugin"
 
 on:
   workflow_dispatch:
