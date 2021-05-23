@@ -8,22 +8,13 @@ on:
         description: 'Message. What changes were made?'
         required: false
         default: 'Updated Figma'
-      branch:
-        description: 'Branch name'
-        required: false
-        default: 'main'
       version:
         description: 'Which version of the Figma document to use?'
         required: false
-        default: 'Latest'
+        default: '' # Will use latest if not set
   push:
     branches:
       - "main"
-    inputs:
-      version:
-        description: 'Which version of the Figma document to use?'
-        required: false
-        default: 'Latest'
 
 jobs:
   build-unix:
@@ -37,7 +28,6 @@ jobs:
         id: input-messages
         run: |
           echo "MESSAGE ---> '${{ github.event.inputs.message }}'"
-          echo "BRANCH  ---> '${{ github.event.inputs.branch }}'"
           echo "VERSION ---> '${{ github.event.inputs.version }}'"
 
       - name: Checkout
