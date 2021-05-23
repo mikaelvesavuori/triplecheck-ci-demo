@@ -35,22 +35,22 @@ jobs:
         uses: actions/checkout@v2
         id: checkout
 
-      - name: Run Figmagic and use latest data, with Node.js ${{ matrix.node-version }}
+      - name: Install Figmagic
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+        id: node
+      - run: |
+          npm install -D figmagic
+
+      - name: Run Figmagic and use latest data, with Node.js ${{ matrix.node-version }}
         id: figma-latest
         if: github.event.inputs.version == 'Latest'
       - run: |
-          npm install -D figmagic
           node node_modules/figmagic/build/index.js
 
       - name: Run Figmagic and named version of Figma data, with Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
         id: figma-versioned
         if: github.event.inputs.version != 'Latest'
       - run: |
-          npm install -D figmagic
           node node_modules/figmagic/build/index.js -- --versionName ${{ github.event.inputs.version }}
