@@ -29,6 +29,8 @@ jobs:
         node-version: [14.x]
     steps:
       - run: echo "MESSAGE --- ${{ github.event.inputs.message }}"
+      - run: echo "BRANCH --- ${{ github.event.inputs.branch }}"
+      - run: echo "VERSION --- ${{ github.event.inputs.version }}"
       - name: Checkout
         uses: actions/checkout@v2
         id: checkout
@@ -38,15 +40,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
         id: figma-latest
-        if: ${{ github.event.inputs.version }} == 'Latest'
-      - run: npm install -D figmagic
-      - run: node node_modules/figmagic/build/index.js
+        if: github.event.inputs.version == 'Latest'
+      - run: |
+          npm install -D figmagic
+          node node_modules/figmagic/build/index.js
 
       - name: Run Figmagic and named version of Figma data, with Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
         id: figma-versioned
-        if: ${{ github.event.inputs.version }} != 'Latest'
-      - run: npm install -D figmagic
-      - run: node node_modules/figmagic/build/index.js -- --versionName ${{ github.event.inputs.version }}
+        if: github.event.inputs.version != 'Latest'
+      - run: |
+          npm install -D figmagic
+          node node_modules/figmagic/build/index.js -- --versionName ${{ github.event.inputs.version }}
