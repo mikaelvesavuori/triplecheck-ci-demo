@@ -28,28 +28,25 @@ jobs:
         os: ["ubuntu-latest"]
         node-version: [14.x]
     steps:
+      - run: echo "MESSAGE --- ${{ github.event.inputs.message }}"
       - name: Checkout
         uses: actions/checkout@v2
         id: checkout
 
-      #- name: Output message
-      #  id: message
-      #- run: echo "MESSAGE ${{ github.event.inputs.message }}"
+      - name: Run Figmagic and use latest data, with Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+        id: figma-latest
+        if: ${{ github.event.inputs.version }} == 'Latest'
+      - run: npm install -g figmagic
+      - run: figmagic
 
-      # - name: Run Figmagic and use latest data, with Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #   id: figma-latest
-      #   if: ${{ github.event.inputs.version }} == 'Latest'
-      # - run: npm install -g figmagic
-      # - run: figmagic
-
-      # - name: Run Figmagic and named version of Figma data, with Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #   id: figma-versioned
-      #   if: ${{ github.event.inputs.version }} != 'Latest'
-      # - run: npm install -g figmagic
-      # - run: figmagic --versionName ${{ github.event.inputs.version }}
+      - name: Run Figmagic and named version of Figma data, with Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+        id: figma-versioned
+        if: ${{ github.event.inputs.version }} != 'Latest'
+      - run: npm install -g figmagic
+      - run: figmagic --versionName ${{ github.event.inputs.version }}
