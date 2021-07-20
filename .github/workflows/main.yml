@@ -2,21 +2,21 @@ name: main
 
 on:
   workflow_dispatch:
+    inputs:
+      message:
+        description: 'Optional message - What changed?'
+        required: false
+        default: 'No message'
+      version:
+        description: 'Figma file version name'
+        required: false
+        default: 'latest'
   push:
     branches:
       - "main"
       - "feature/*"
       - "feature/**"
       
-inputs:
-  message:
-    description: 'Optional message - What changed?'
-    required: false
-    default: 'No message'
-  version:
-    description: 'Figma file version name'
-    required: false
-    default: 'latest'
 
 jobs:
   build-unix:
