@@ -7,6 +7,16 @@ on:
       - "main"
       - "feature/*"
       - "feature/**"
+      
+inputs:
+  message:
+    description: 'Optional message - What changed?'
+    required: false
+    default: 'No message'
+  version:
+    description: 'Figma file version name'
+    required: false
+    default: 'latest'
 
 jobs:
   build-unix:
